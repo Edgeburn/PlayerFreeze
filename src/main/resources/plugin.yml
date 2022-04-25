@@ -1,0 +1,42 @@
+name: PlayerFreeze
+version: '${project.version}'
+main: com.edgeburnmedia.playerfreeze.PlayerFreeze
+api-version: 1.18
+commands:
+  freeze:
+    permission: playerfreeze.freeze
+    usage: /freeze <player>
+    description: Freeze a player
+    min-args: 1
+    max-args: 1
+  unfreeze:
+    permission: playerfreeze.freeze
+    usage: /unfreeze <player>
+    description: Unfreeze a player
+    min-args: 1
+    max-args: 1
+  freezeall:
+    permission: playerfreeze.freezeall
+    usage: /freezeall
+    description: Freeze all players
+    min-args: 0
+    max-args: 0
+  unfreezeall:
+    permission: playerfreeze.unfreezeall
+    usage: /unfreezeall
+    description: Unfreeze all players
+    min-args: 0
+    max-args: 0
+permissions:
+  playerfreeze.freeze:
+    description: Allow players to freeze and unfreeze other players
+    default: op
+  playerfreeze.exempt:
+    description: Allow players to exempt themselves from being frozen
+    default: false
+  playerfreeze.freezeall:
+    description: Allow players to freeze all players
+    default: op
+  playerfreeze.unfreezeall:
+    description: Allow players to unfreeze all players
+    default: op
