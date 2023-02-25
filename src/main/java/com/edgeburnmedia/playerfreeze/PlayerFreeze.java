@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -111,8 +112,16 @@ public final class PlayerFreeze extends JavaPlugin implements Listener {
 
 	@EventHandler
 	public void onPlayerDamage(EntityDamageEvent e) {
-		if (e.getEntity() instanceof Player) {
-			Player player = (Player) e.getEntity();
+		if (e.getEntity() instanceof Player player) {
+			if (isFrozen(player)) {
+				e.setCancelled(true);
+			}
+		}
+	}
+
+	@EventHandler
+	public void onPlayerAttack(EntityDamageByEntityEvent e) {
+		if (e.getDamager() instanceof Player player) {
 			if (isFrozen(player)) {
 				e.setCancelled(true);
 			}
